@@ -1,0 +1,28 @@
+// ========== SIZE ========================================
+$max_Project_Size: 1160;                // Для функции adaptive_size
+$min_Project_Size: 320;                 // Для функции adaptive_size
+$basic_Project_Size: 18;                // Для функции adaptive_size
+
+$maxWidth: #{$max_Project_Size}px;
+$minWidtch: #{$min_Project_Size}px;
+
+$pad-big-size: 991px; // для больших планшетов - начало
+$pad-md-size: 770px;  // для средних планшетов - начало 767px
+$mobile-size: 479px;  // для телефонов - начало
+
+
+// ========== FONT ========================================
+$fontSize: #{$basic_Project_Size}px;
+
+
+// ========== COLOR ========================================
+
+
+
+// ========== BREAKPOINT ========================================
+$breakpoint: (
+    "991": 991px,
+    "770": 770px,
+    "450": 450px,
+    "320": 320px
+);

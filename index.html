@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Иконочный шрифт -->
+    <link rel="stylesheet" href="css/icon-style.css">
+
+    <!-- Иконка -->
+    <link rel="shortcut icon" href="img/fav-icon.png" image/x-icon">
+
+    <title>Погода</title>
+</head>
+
+<body>
+
+    <div class="wrapper">
+
+        <header class="header" id="header">
+
+            <h1 class="title">Погода</h1>
+
+            <form class="search">
+                <input type="text" name="search__input" id="search__input" class="search__input  input" placeholder="...">
+                <button type="button" class="search__btn btn i_search"></button>
+            </form>
+
+        </header>
+
+        <main class="main" id="main">
+
+            <section class="weather">
+                <div class="weather__location">
+                    <p class="weather__location__citi citi">Москва</p>
+                    <img src="img/icon _location.png" alt="">
+                    <!-- <i class="weather__location__icon i_location"></i> -->
+                </div>
+                <div class="weather__center">
+                    <p class="weather__center__temperature">+30°C</p>
+                    <figure class="weather__center__figure">
+                        <img src="img/Clear.png" alt="солнце" class="weather__center__figure__img">
+                    </figure>
+                    <p class="weather__center__description">Ясно</p>
+                </div>
+                <div class="weather__details">
+                    <div class="weather__details__feels">
+                        <p>Ощущается как</p>
+                        <p class="weather__details__feels__value">+30°C</p>
+                    </div>
+                    <div class="weather__details__wind">
+                        <p>Скорость ветра</p>
+                        <p class="weather__details__wind__value">2 м/с</p>
+                    </div>
+                    <div class="weather__details__humidity">
+                        <p>Влажность</p>
+                        <p class="weather__details__humidity__value">10 %</p>
+                    </div>
+                    <div class="weather__details__airPressure">
+                        <p>Атмосферное давление</p>
+                        <p class="weather__details__airPressure__value">760 мм рт. ст.</p>
+                    </div>
+                    <div class="weather__details__visibility">
+                        <p>Видимость</p>
+                        <p class="weather__details__visibility__value">16 км.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Прогноз -->
+            <section class="forecast">
+                <div class="forecast__card">
+                    <p class="forecast__card__day">Понедельник</p>
+                    <p class="forecast__card__time">13:00</p>
+                    <img class="forecast__card__img" src="img/Clear.png" alt="">
+                    <div class="forecast__card__temp">+31°</div>
+                    <div class="box"></div>
+                </div>
+        </main>
+
+        <fooer class="footer" id="footer">
+        </fooer>
+
+    </div>
+
+    <!-- Javascript =================================================== -->
+    <script type="module" src="js/main.js"></script>
+    <!--  ============================================================= -->
+
+</body>
+
+</html>

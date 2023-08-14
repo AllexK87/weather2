@@ -1,0 +1,51 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+// Links
+a,
+a:visited {
+    text-decoration: none;
+    
+}
+
+// a:visited {
+//     color: inherit;
+// }
+
+// Text
+h1, h2, h3, h4, h5, h6, p {
+    font-style: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+// List
+ul li {
+    list-style: none;
+}
+
+// Form
+input,
+textarea,
+button,
+select {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+button {
+    cursor: pointer;
+}

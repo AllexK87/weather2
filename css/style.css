@@ -1,0 +1,295 @@
+/* FONTS */
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+@font-face {
+  font-family: "Inter";
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: oblique 0deg 10deg;
+  src: url("../fonts/Inter.var.woff2") format("woff2");
+}
+/* RESET STYLE */
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-style: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul li {
+  list-style: none;
+}
+
+input,
+textarea,
+button,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* ============================== START */
+:root {
+  --colorPrimary: #AD36CB;
+  --color2: #333;
+  --colorBg: #1E1E1E;
+  --colorBgCard: linear-gradient(147deg, #AD36CB 26.56%, #333 68.75%);
+  --colorBgCard2:linear-gradient(128deg, #373333 0%, rgba(55, 51, 51, 0.822) 100%);
+  --colorText: #fff;
+  --fontNamePrimary: "Inter", sans-serif;
+  --fontNameTitle: "Lobster", cursive;
+  --border: 2px solid #575756;
+}
+
+html, body {
+  height: 100%;
+}
+
+html {
+  font-family: var(--fontNamePrimary);
+  font-size: 18px;
+}
+
+body {
+  background: var(--colorBg);
+  color: var(--colorText);
+}
+
+/* ============================== BLOCK */
+/* ============================== WRAPPER */
+.wrapper {
+  max-width: 1160px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 1.1111111111rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  row-gap: clamp(1.6666666667rem, 8.3333333333vw + 0.1851851852rem, 5.5555555556rem);
+  font-size: clamp(0.8888888889rem, 0.2380952381vw + 0.8465608466rem, 1rem);
+}
+
+/* ============================== HEADER */
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(0.5555555556rem, 1.1904761905vw + 0.3439153439rem, 1.1111111111rem);
+}
+.header .title {
+  font-family: var(--fontNameTitle);
+  font-size: clamp(1.5555555556rem, 1.4285714286vw + 1.3015873016rem, 2.2222222222rem);
+  color: var(--colorText);
+}
+.header .search {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  gap: 0.8333333333rem;
+}
+@media (width >= 450px) {
+  .header .search {
+    justify-content: flex-end;
+  }
+}
+.header .search__input {
+  width: clamp(11.1111111111rem, 35.7142857143vw + 4.7619047619rem, 27.7777777778rem);
+  padding: 12px 20px;
+  border-radius: 50px;
+}
+.header .search__btn {
+  display: block;
+  padding: 12px;
+  border-radius: 50px;
+  background: #fff;
+}
+
+/* ============================== weather */
+.weather {
+  background: var(--colorBgCard);
+  border-radius: 32px;
+  padding: 35px 20px;
+}
+.weather__location {
+  display: flex;
+  align-items: center;
+}
+.weather__location__citi {
+  font-size: clamp(1.1111111111rem, 1.1904761905vw + 0.8994708995rem, 1.6666666667rem);
+  font-weight: 200;
+  letter-spacing: -1.5px;
+  text-transform: capitalize;
+}
+.weather__location img {
+  width: clamp(1.1666666667rem, 1.1904761905vw + 0.955026455rem, 1.7222222222rem);
+}
+.weather__center {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  justify-content: center;
+  align-items: center;
+  -moz-column-gap: 30px;
+       column-gap: 30px;
+  margin-bottom: clamp(1.6666666667rem, 2.380952381vw + 1.2433862434rem, 2.7777777778rem);
+}
+@media (width <= 450px) {
+  .weather__center {
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    row-gap: 10px;
+    margin-top: 10px;
+  }
+}
+.weather__center__temperature {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  font-size: clamp(2.7777777778rem, 2.380952381vw + 2.3544973545rem, 3.8888888889rem);
+  font-weight: 600;
+  letter-spacing: -2px;
+}
+@media (width <= 450px) {
+  .weather__center__temperature {
+    grid-column: 1/2;
+    grid-row: 1/2;
+  }
+}
+.weather__center__figure {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+@media (width <= 450px) {
+  .weather__center__figure {
+    grid-column: 1/2;
+    grid-row: 2/3;
+  }
+}
+.weather__center__figure__img {
+  height: clamp(5.5555555556rem, 2.380952381vw + 5.1322751323rem, 6.6666666667rem);
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.weather__center__description {
+  grid-column: 1/-1;
+  grid-row: 2/3;
+  text-align: center;
+  font-size: clamp(0.8888888889rem, 0.2380952381vw + 0.8465608466rem, 1rem);
+  font-weight: 300;
+}
+.weather__center__description::first-letter {
+  text-transform: uppercase;
+}
+@media (width <= 450px) {
+  .weather__center__description {
+    grid-column: 1/2;
+    grid-row: 3/4;
+  }
+}
+.weather__details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  align-items: center;
+  gap: 15px;
+  text-align: center;
+}
+.weather__details div p + p {
+  margin-top: clamp(0.2777777778rem, 0.5952380952vw + 0.171957672rem, 0.5555555556rem);
+}
+
+/* ==============================  */
+.forecast {
+  margin-top: clamp(1.1111111111rem, 9.5238095238vw + -0.582010582rem, 5.5555555556rem);
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 200px);
+  gap: 30px;
+  justify-content: space-between;
+  width: 100%;
+}
+@media (700px >= width >= 480px) {
+  .forecast {
+    justify-content: space-around;
+  }
+}
+@media (width <= 480px) {
+  .forecast {
+    grid-template-columns: repeat(auto-fit, 100%);
+  }
+}
+
+.forecast__card {
+  width: 200px;
+  position: relative;
+  background: var(--colorPrimary);
+  padding: 10px;
+  text-align: center;
+  border-radius: 25px;
+  overflow: hidden;
+}
+@media (width <= 480px) {
+  .forecast__card {
+    width: 100%;
+  }
+}
+.forecast__card::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: var(--colorBgCard2);
+  border-radius: 20px;
+}
+
+.forecast__card__day {
+  font-size: clamp(0.8888888889rem, 0.2380952381vw + 0.8465608466rem, 1rem);
+  text-transform: uppercase;
+}
+
+.forecast__card__time {
+  font-size: clamp(0.8888888889rem, 0.2380952381vw + 0.8465608466rem, 1rem);
+}
+
+.forecast__card__img {
+  position: relative;
+  z-index: 2;
+}
+
+.forecast__card__temp {
+  position: relative;
+  z-index: 2;
+  font-size: clamp(0.8888888889rem, 0.9523809524vw + 0.7195767196rem, 1.3333333333rem);
+  font-weight: 600;
+}
+
+/* ==============================  */
+/* ==============================  */
+/* ==============================  */
+/* ==============================  */
+/* ==============================  */

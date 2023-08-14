@@ -1,0 +1,317 @@
+/* FONTS */
+@import 'fonts';
+
+/* RESET STYLE */
+@import 'reset';
+
+// VARIABLES
+@import 'variables';
+
+// MIXINS
+@import 'mixins';
+
+// FUNCTION
+@import 'function';
+
+/* ============================== START */
+:root{
+    --colorPrimary: #AD36CB;
+    --color2: #333;
+    --colorBg: #1E1E1E;
+    --colorBgCard: linear-gradient(147deg, #AD36CB 26.56%, #333 68.75%);
+    --colorBgCard2:linear-gradient(128deg, #373333 0%, rgba(55, 51, 51, 0.822) 100%);
+    --colorText: #fff;
+    --fontNamePrimary: 'Inter', sans-serif;
+    --fontNameTitle: 'Lobster', cursive;
+
+    --border: 2px solid #575756;
+}
+
+html, body {
+    height: 100%;
+}
+
+html {
+    font-family: var(--fontNamePrimary);
+    font-size: 18px;
+}
+
+body {
+    background: var(--colorBg);
+    color: var(--colorText);
+}
+// ==============================
+
+ 
+/* ============================== BLOCK */
+// ==============================
+
+
+/* ============================== WRAPPER */
+.wrapper {
+    max-width: $maxWidth;
+    margin: 0 auto;
+    height: 100%;
+    padding: Pix-Rem(20);
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    row-gap: AdaptiveSize(30, 100);
+
+    font-size: AdaptiveSize(16, 18);
+}
+// ==============================
+
+
+/* ============================== HEADER */
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: AdaptiveSize(10, 20);
+    
+    .title {
+        font-family: var(--fontNameTitle);
+        font-size: AdaptiveSize(28, 40);
+        color: var(--colorText);
+    }
+
+    .search {
+        flex: 1 1 auto;
+
+        display: flex;
+        justify-content: center;
+        gap: Pix-Rem(15);
+        
+        @media (width >= 450px) {
+            justify-content: flex-end;
+        }
+        
+        &__input {
+            width: AdaptiveSize(200, 500);
+            padding: 12px 20px;
+
+            // border: var(--border);
+            border-radius: 50px;
+        }
+
+        &__btn {
+            display: block;
+            padding: 12px;
+            // border: var(--border);
+            border-radius: 50px;
+            background: #fff;
+        }
+    }
+}
+// ==============================
+
+
+/* ============================== weather */
+.weather {
+    background: var(--colorBgCard);
+    border-radius: 32px;
+    // box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 
+    //             0px 4px 4px 0px rgba(255, 250, 250, 0.25), 
+    //             0px 4px 4px 0px rgba(253, 245, 245, 0.25);
+    padding: 35px 20px;
+
+    &__location {
+        display: flex;
+        align-items: center;
+        
+        &__citi {
+            font-size: AdaptiveSize(20, 30);
+            font-weight: 200;
+            letter-spacing: -1.5px;
+            text-transform: capitalize;
+        }
+
+        img {
+            width: AdaptiveSize(21, 31)
+        }
+    }
+
+    &__center {  
+        display: grid;
+        grid-template-columns: auto auto;
+        grid-template-rows: auto auto;
+        justify-content: center;
+        align-items: center;
+        column-gap: 30px;
+
+        margin-bottom: AdaptiveSize(30, 50);
+
+        @media (width <= 450px) {
+            grid-template-columns: auto;
+            grid-template-rows: auto auto auto;
+            justify-items: center;
+            row-gap: 10px;
+            margin-top: 10px;
+        }
+        
+        &__temperature {
+            grid-column: 1/2;
+            grid-row: 1/2;
+
+            font-size: AdaptiveSize(50, 70);
+            font-weight: 600;
+            letter-spacing: -2px;
+
+            @media (width <= 450px) {
+                grid-column: 1/2;
+                grid-row: 1/2;
+            }
+        }
+
+        &__figure {
+            grid-column: 2/3;
+            grid-row: 1/2;
+
+            @media (width <= 450px) {
+                grid-column: 1/2;
+                grid-row: 2/3;
+            }
+
+            &__img {
+                height: AdaptiveSize(100, 120);
+                object-fit: cover;
+            }
+        }
+
+        &__description {
+            grid-column: 1/-1;
+            grid-row: 2/3;
+            text-align: center;
+
+            font-size: AdaptiveSize(16, 18);
+            font-weight: 300;
+            
+            // --- Предложение с заглавной буквы
+            &::first-letter{
+                text-transform: uppercase;
+            }
+
+            @media (width <= 450px) {
+                grid-column: 1/2;
+                grid-row: 3/4;
+            }
+        }
+    }
+
+    &__details {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        align-items: center;
+        gap: 15px;
+        text-align: center;
+
+        div p + p {
+            margin-top: AdaptiveSize(5, 10);
+        }
+    }
+
+}
+
+    
+// ==============================
+
+
+/* ==============================  */
+.forecast {
+    margin-top: AdaptiveSize(20, 100);
+    margin-bottom: 10px;
+    // display: grid;
+    // grid-template-columns: repeat(auto-fit, 250px);
+    // column-gap: AdaptiveSize(10, 100);
+    // row-gap: 30px;
+    // justify-content: space-evenly;
+
+    // display: flex;
+    // flex-wrap: wrap;
+    // gap: 30px;
+    // justify-content: space-between;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 200px);
+    gap: 30px;
+    justify-content: space-between;
+    width: 100%;
+
+    @media (700px >= width >= 480px) {
+        justify-content: space-around;
+    }
+
+    @media (width <= 480px) {
+        grid-template-columns: repeat(auto-fit, 100%);
+    }
+}
+.forecast__card {
+    width: 200px;
+    position: relative;
+    background: var(--colorPrimary);
+    padding: 10px;
+    text-align: center;
+    border-radius: 25px;
+    overflow: hidden;
+
+    @media (width <= 480px) {
+        width: 100%;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background: var(--colorBgCard2);
+        border-radius: 20px;
+    }
+}
+
+.forecast__card__day {
+    font-size: AdaptiveSize(16, 18);
+    text-transform: uppercase;
+}
+
+.forecast__card__time {
+    font-size: AdaptiveSize(16, 18);
+}
+
+.forecast__card__img {
+    position: relative;
+    z-index: 2;
+}
+
+.forecast__card__temp {
+    position: relative;
+    z-index: 2;
+
+    font-size: AdaptiveSize(16, 24);
+    font-weight: 600;
+}
+// ==============================
+
+/* ==============================  */
+// ==============================
+
+
+/* ==============================  */
+// ==============================
+
+
+/* ==============================  */
+// ==============================
+
+
+/* ==============================  */
+// ==============================
+
+
+/* ==============================  */
+// aspect-ratio: 1.9;
+// ==============================

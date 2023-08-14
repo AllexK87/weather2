@@ -1,0 +1,13 @@
+// ========== SIZE ========================================
+@function AdaptiveSize($minSize, $maxSize){
+    $v: (100 * ($maxSize - $minSize) / ($max_Project_Size - $min_Project_Size)) + vw;
+    $r: ($min_Project_Size * $maxSize - $max_Project_Size * $minSize) / ($min_Project_Size - $max_Project_Size);
+    $r_rem: $r / $basic_Project_Size + rem;
+    $minSize: $minSize / $basic_Project_Size + rem;
+    $maxSize: $maxSize / $basic_Project_Size + rem;
+    @return clamp(#{$minSize}, #{$v} + #{$r_rem}, #{$maxSize}) 
+};
+
+@function Pix-Rem($px){
+    @return #{$px / $basic_Project_Size}rem
+}

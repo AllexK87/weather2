@@ -1,0 +1,92 @@
+// ========== FONT ========================================
+@mixin FontSizeMainPercent {
+    font-size: 62.5%;
+    @media (max-width: 991px) {
+        font-size: 55%;
+    }
+
+    @media (max-width: 450px) {
+        font-size: 50%;
+    }
+}
+
+
+// ========== GRID ========================================
+@mixin GRID($val) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+}
+
+@mixin  GRID-BORDER {
+    display: grid;
+    grid-template: auto / 1fr minmax($minWidtch, $maxWidth) 1fr;
+}
+
+@mixin GRID-CELL ($row, $column) {
+    grid-row: $row;
+    grid-column: $column;
+}
+
+// ========== POSITION ======================================
+@mixin ABSOLUTE {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+// ========== MEDIA ========================================
+@mixin MEDIA-MAX_WIDTH ($size) {
+    @media screen and (max-width: $size) {
+        @content;
+    }
+}
+
+@mixin MEDIA-MIN_WIDTH ($size) {
+    @media screen and (min-width: $size) {
+        @content;
+    }
+}
+
+@mixin MEDIA-PAD-BIG-MAX_WIDTH {
+    @media screen and (max-width: 991px) {
+    /* стили для больших планшетов - начало */
+    @content; 
+    }
+}
+
+@mixin MEDIA-PAD-MEDIUM-MAX_WIDTH {
+    @media screen and (max-width: 767px) {
+    /* стили для больших планшетов - начало */
+    @content; 
+    }
+}
+
+@mixin MEDIA-MOBILE-MAX_WIDTH {
+    @media screen and (max-width: 479px) {
+    /* стили для больших планшетов - начало */
+    @content; 
+    }
+}
+
+
+@mixin MEDIA-PAD-BIG-MIN_WIDTH {
+    @media screen and (min-width: 991px) {
+    /* стили для больших планшетов - начало */
+    @content; 
+    }
+}
+
+@mixin MEDIA-PAD-MEDIUM-MIN_WIDTH {
+    @media screen and (min-width: 770px) {
+    /* стили для больших планшетов - начало 767px*/
+    @content; 
+    }
+}
+
+@mixin MEDIA-MOBILE-MIN_WIDTH {
+    @media screen and (min-width: 479px) {
+    /* стили для больших планшетов - начало */
+    @content; 
+    }
+}
