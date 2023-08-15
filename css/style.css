@@ -225,36 +225,25 @@ body {
 .forecast {
   margin-top: clamp(1.1111111111rem, 9.5238095238vw + -0.582010582rem, 5.5555555556rem);
   margin-bottom: 10px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 200px);
+  display: flex;
+  flex-wrap: wrap;
   gap: 30px;
   justify-content: space-between;
-  width: 100%;
 }
-@media (700px >= width >= 480px) {
+@media (788px >= width >= 400px) {
   .forecast {
     justify-content: space-around;
   }
 }
-@media (width <= 480px) {
-  .forecast {
-    grid-template-columns: repeat(auto-fit, 100%);
-  }
-}
 
 .forecast__card {
-  width: 200px;
+  width: clamp(6.6666666667rem, 9.5238095238vw + 4.9735449735rem, 11.1111111111rem);
   position: relative;
   background: var(--colorPrimary);
   padding: 10px;
   text-align: center;
   border-radius: 25px;
   overflow: hidden;
-}
-@media (width <= 480px) {
-  .forecast__card {
-    width: 100%;
-  }
 }
 .forecast__card::before {
   content: "";
@@ -268,23 +257,25 @@ body {
 }
 
 .forecast__card__day {
-  font-size: clamp(0.8888888889rem, 0.2380952381vw + 0.8465608466rem, 1rem);
-  text-transform: uppercase;
+  font-size: clamp(0.7777777778rem, 0.4761904762vw + 0.6931216931rem, 1rem);
 }
 
 .forecast__card__time {
-  font-size: clamp(0.8888888889rem, 0.2380952381vw + 0.8465608466rem, 1rem);
+  font-size: clamp(0.7777777778rem, 0.4761904762vw + 0.6931216931rem, 1rem);
 }
 
 .forecast__card__img {
   position: relative;
   z-index: 2;
+  width: clamp(2.2222222222rem, 4.7619047619vw + 1.3756613757rem, 4.4444444444rem);
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .forecast__card__temp {
   position: relative;
   z-index: 2;
-  font-size: clamp(0.8888888889rem, 0.9523809524vw + 0.7195767196rem, 1.3333333333rem);
+  font-size: clamp(1rem, 0.7142857143vw + 0.873015873rem, 1.3333333333rem);
   font-weight: 600;
 }
 

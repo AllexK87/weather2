@@ -1,12 +1,21 @@
-let citi = 'смоленск'
+let citi = 'демидов'
 let url = 'https://api.openweathermap.org/data/2.5/weather?q=' + citi +'&units=metric&lang=ru&appid=2e86a32f9d29e13d3916a7ca8be036ad'
 
-// --- напишет город
-const writeCiti = () => {
-    document.querySelector(".citi").innerHTML = citi
+// --- Определяет по дате день недели
+function getWeekDay (date) {
+    let days = ['Воскресенье', 
+                'Понедельник', 
+                'Вторник', 
+                'Среда', 
+                'Четверг', 
+                'Пятница', 
+                'Суббота'];
+    return days[date.getDay()]
 }
 
+// --- ПОГОДА
 async function checkWeather() {
+    
     // --- section weather
     const response = await fetch(url)
     let data = await response.json()
@@ -14,19 +23,7 @@ async function checkWeather() {
     console.log(data)
 
     // --- напишет город
-    writeCiti()
-
-    // --- День недели
-    function getWeekDay (date) {
-        let days = ['Воскресенье', 
-                    'Понедельник', 
-                    'Вторник', 
-                    'Среда', 
-                    'Четверг', 
-                    'Пятница', 
-                    'Суббота'];
-        return days[date.getDay()]
-    }
+    document.querySelector(".citi").innerHTML = citi
 
     // --- Укажет температуру
     let temperature = Math.round(data.main.temp)
@@ -88,88 +85,95 @@ async function checkWeather() {
     let forecastSection = document.createElement('section')
     forecastSection.classList = 'forecast'
     document.querySelector('.main').append(forecastSection)
-
+    
     // -- Количествозначений в массиве
     let lengthDataForecast = dataForecast.list.length
     
-    // --- Для цикла
-    function start () {
-        return 7
+    // Заносим в наш массив данные на 12 часов
+    let myArray = []
+    for (let index = 0; index < lengthDataForecast; ++index) {
+        let time = dataForecast.list[index].dt_txt.substring(11, 13)         
+
+        if (time == '12') {
+            myArray.push(dataForecast.list[index])
+        }
     }
 
-    function step (i) {
-        return i + 7
-    }
-    
-    // Добавляем карточки прогноза
-    for (let index = start(); index <= lengthDataForecast; index = step(index)) {
+    console.log(myArray)
+
+    // Добавляем карточки прогноза 
+    for (let index = 0; index < myArray.length; index++) {
         let cardForecast = document.createElement('div')
         cardForecast.classList = 'forecast__card'
         cardForecast.dataset.id = index
-        
+
         document.querySelector('.forecast').append(cardForecast)
     }
 
+
     // --- Добавляем день недели
-    for (let index = start(); index <= lengthDataForecast; index = step(index)) {
-        let dtTxt = dataForecast.list[index].dt_txt
-        let Year = dtTxt.substring(0, 4)
-        let Month = dtTxt.substring(5, 7) - 1
-        let Day = dtTxt.substring(8, 10)
+    for (let index = 0; index < myArray.length; index++) {
+        let dateTxt = myArray[index].dt_txt
+        
+        let Year = dateTxt.substring(0, 4)
+        let Month = dateTxt.substring(5, 7) - 1
+        let Day = dateTxt.substring(8, 10)
+        
         let date = new Date(Year, Month, Day)
         let dayWeek = getWeekDay(date)
 
-        let dayWeekCardForecast = document.createElement('p')
-        dayWeekCardForecast.classList = 'forecast__card__day'
-        dayWeekCardForecast.innerHTML = dayWeek
+        let dayWeekCard = document.createElement('p')
+        dayWeekCard.classList = 'forecast__card__day'
+        dayWeekCard.innerHTML = dayWeek
 
-        document.querySelector(`[data-id = "${index}"]`).append(dayWeekCardForecast)
+        document.querySelector(`[data-id = "${index}"]`).append(dayWeekCard)
     }
 
-        // --- Добавляем время
-        for (let index = start(); index <= lengthDataForecast; index = step(index)) {
-            let dtTxt = dataForecast.list[index].dt_txt
-            
-            let time = dtTxt.substring(11, 16)
-    
-            let timeCardForecast = document.createElement('p')
-            timeCardForecast.classList = 'forecast__card__time'
-            timeCardForecast.innerHTML = time
-    
-            document.querySelector(`[data-id = "${index}"]`).append(timeCardForecast)
-        }
-
-        // --- Добавляем картинку
-        for (let index = start(); index <= lengthDataForecast; index = step(index)) {
-            let imgCardForecast = document.createElement('img')
-            imgCardForecast.src = `img/${dataForecast.list[index].weather[0].main}.png`
-            imgCardForecast.classList = 'forecast__card__img'
-
-            document.querySelector(`[data-id = "${index}"]`).append(imgCardForecast)
-        }   
+    // --- Добавляем время
+    for (let index = 0; index < myArray.length; index++) {
+        let dateTxt = myArray[index].dt_txt
         
-        // --- Добавляем температуру
-        for (let index = start(); index <= lengthDataForecast; index = step(index)) {
-            let tempCardForecast = document.createElement('p')
-            tempCardForecast.classList = 'forecast__card__temp'
-            let tempCard = Math.round(dataForecast.list[index].main.temp)
-            if (tempCard > 0) {
-                tempCard = `+${tempCard}`
-            }
-            tempCardForecast.innerHTML = `${tempCard} °`
+        let time = dateTxt.substring(11, 16)
 
-            document.querySelector(`[data-id = "${index}"]`).append(tempCardForecast)
+        let timeCard = document.createElement('p')
+        timeCard.classList = 'forecast__card__time'
+        timeCard.innerHTML = time
+
+        document.querySelector(`[data-id = "${index}"]`).append(timeCard)
+    }
+
+    // --- Добавляем картинку
+    for (let index = 0; index < myArray.length; index++) {
+        let imgCard = document.createElement('img')
+        imgCard.src = `img/${myArray[index].weather[0].main}.png`
+        imgCard.classList = 'forecast__card__img'
+
+        document.querySelector(`[data-id = "${index}"]`).append(imgCard)
+    }  
+
+    // --- Добавляем температуру
+    for (let index = 0; index < myArray.length; index++) {
+        let tempCardForecast = document.createElement('p')
+        tempCardForecast.classList = 'forecast__card__temp'
+
+        let tempCard = Math.round(myArray[index].main.temp)
+        
+        if (tempCard > 0) {
+            tempCard = `+${tempCard}`
         }
+
+        tempCardForecast.innerHTML = `${tempCard} °`
+
+        document.querySelector(`[data-id = "${index}"]`).append(tempCardForecast)
+    }
 }
+
 
 // --- Посмотреть погоду
 function viewWather () {
     citi = document.querySelector('#search__input').value
-
     url = 'https://api.openweathermap.org/data/2.5/weather?q=' + citi +'&units=metric&lang=ru&appid=2e86a32f9d29e13d3916a7ca8be036ad'
-
     checkWeather()
-
     document.querySelector('#search__input').value = ''
 }
 

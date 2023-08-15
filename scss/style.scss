@@ -234,22 +234,27 @@ body {
     // gap: 30px;
     // justify-content: space-between;
 
-    display: grid;
-    grid-template-columns: repeat(auto-fit, 200px);
+    // display: grid;
+    // grid-template-columns: repeat(auto-fit, 200px);
+    // gap: 30px;
+    // justify-content: space-between;
+    // width: 100%;
+
+    display: flex;
+    flex-wrap: wrap;
     gap: 30px;
     justify-content: space-between;
-    width: 100%;
 
-    @media (700px >= width >= 480px) {
+    @media (788px >= width >= 400px) {
         justify-content: space-around;
     }
 
-    @media (width <= 480px) {
-        grid-template-columns: repeat(auto-fit, 100%);
-    }
+    // @media (width <= 515px) {
+        // grid-template-columns: repeat(auto-fit, 100%);
+    // }
 }
 .forecast__card {
-    width: 200px;
+    width: AdaptiveSize(120, 200);
     position: relative;
     background: var(--colorPrimary);
     padding: 10px;
@@ -257,9 +262,9 @@ body {
     border-radius: 25px;
     overflow: hidden;
 
-    @media (width <= 480px) {
-        width: 100%;
-    }
+    // @media (width <= 320px) {
+    //     width: 100%;
+    // }
 
     &::before {
         content: '';
@@ -274,24 +279,27 @@ body {
 }
 
 .forecast__card__day {
-    font-size: AdaptiveSize(16, 18);
-    text-transform: uppercase;
+    font-size: AdaptiveSize(14, 18);
+    // text-transform: uppercase;
 }
 
 .forecast__card__time {
-    font-size: AdaptiveSize(16, 18);
+    font-size: AdaptiveSize(14, 18);
 }
 
 .forecast__card__img {
     position: relative;
     z-index: 2;
+
+    width: AdaptiveSize(40, 80);
+    object-fit: cover;
 }
 
 .forecast__card__temp {
     position: relative;
     z-index: 2;
 
-    font-size: AdaptiveSize(16, 24);
+    font-size: AdaptiveSize(18, 24);
     font-weight: 600;
 }
 // ==============================
