@@ -130,17 +130,17 @@ async function checkWeather() {
     }
 
     // --- Добавляем время
-    for (let index = 0; index < myArray.length; index++) {
-        let dateTxt = myArray[index].dt_txt
+    // for (let index = 0; index < myArray.length; index++) {
+    //     let dateTxt = myArray[index].dt_txt
         
-        let time = dateTxt.substring(11, 16)
+    //     let time = dateTxt.substring(11, 16)
 
-        let timeCard = document.createElement('p')
-        timeCard.classList = 'forecast__card__time'
-        timeCard.innerHTML = time
+    //     let timeCard = document.createElement('p')
+    //     timeCard.classList = 'forecast__card__time'
+    //     timeCard.innerHTML = time
 
-        document.querySelector(`[data-id = "${index}"]`).append(timeCard)
-    }
+    //     document.querySelector(`[data-id = "${index}"]`).append(timeCard)
+    // }
 
     // --- Добавляем картинку
     for (let index = 0; index < myArray.length; index++) {

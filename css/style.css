@@ -84,7 +84,7 @@ body {
   max-width: 1160px;
   margin: 0 auto;
   height: 100%;
-  padding: 1.1111111111rem;
+  padding: 0 1.1111111111rem;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
@@ -98,7 +98,10 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: clamp(0.5555555556rem, 1.1904761905vw + 0.3439153439rem, 1.1111111111rem);
+  gap: clamp(0.5555555556rem, 4.7619047619vw + -0.291005291rem, 2.7777777778rem);
+  padding: 20px 0;
+  height: 100svh;
+  transition: all 0.2s linear;
 }
 .header .title {
   font-family: var(--fontNameTitle);
@@ -106,7 +109,6 @@ body {
   color: var(--colorText);
 }
 .header .search {
-  flex: 1 1 auto;
   display: flex;
   justify-content: center;
   gap: 0.8333333333rem;
@@ -129,6 +131,11 @@ body {
 }
 
 /* ============================== weather */
+.main {
+  display: none;
+  transition: all 0.2s linear;
+}
+
 .weather {
   background: var(--colorBgCard);
   border-radius: 32px;
@@ -223,6 +230,7 @@ body {
 
 /* ==============================  */
 .forecast {
+  transition: all 0.2s linear;
   margin-top: clamp(1.1111111111rem, 9.5238095238vw + -0.582010582rem, 5.5555555556rem);
   margin-bottom: 10px;
   display: flex;

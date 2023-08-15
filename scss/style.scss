@@ -52,7 +52,7 @@ body {
     max-width: $maxWidth;
     margin: 0 auto;
     height: 100%;
-    padding: Pix-Rem(20);
+    padding: 0 Pix-Rem(20);
 
     display: grid;
     grid-template-columns: 1fr;
@@ -70,7 +70,10 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    gap: AdaptiveSize(10, 20);
+    gap: AdaptiveSize(10, 50);
+    padding: 20px 0;
+    height: 100svh;
+    transition: all .2s linear;
     
     .title {
         font-family: var(--fontNameTitle);
@@ -79,7 +82,7 @@ body {
     }
 
     .search {
-        flex: 1 1 auto;
+        // flex: 1 1 auto;
 
         display: flex;
         justify-content: center;
@@ -110,7 +113,12 @@ body {
 
 
 /* ============================== weather */
+.main {
+    display: none;
+    transition: all .2s linear;
+}
 .weather {
+    // display: none;
     background: var(--colorBgCard);
     border-radius: 32px;
     // box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25), 
@@ -221,6 +229,7 @@ body {
 
 /* ==============================  */
 .forecast {
+    transition: all .2s linear;
     margin-top: AdaptiveSize(20, 100);
     margin-bottom: 10px;
     // display: grid;
