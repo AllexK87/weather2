@@ -96,6 +96,7 @@ body {
 .header {
   display: flex;
   justify-content: center;
+  align-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: clamp(0.5555555556rem, 4.7619047619vw + -0.291005291rem, 2.7777777778rem);
